@@ -54,7 +54,7 @@ public class DLCanvasService {
             map.get(path.getEndId()).addPrev(path.getStartId());
         });
 
-        System.out.println(data);
+//        System.out.println(data);
 
         //遍历边然后开始写入缓冲区
         for (Paths path : data.getPaths()) {
