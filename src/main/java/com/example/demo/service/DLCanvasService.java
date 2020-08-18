@@ -77,7 +77,12 @@ public class DLCanvasService {
         return buffer.toString();
     }
 
-
+    /**
+     * 链表的递归调用方法，生成逐行代码
+     * @param node
+     * @param buffer
+     * @param map
+     */
     private static void write(Nodes node, StringBuffer buffer, HashMap<String, Nodes> map) {
 
         if (node.getStatus() == 1) {
@@ -114,7 +119,11 @@ public class DLCanvasService {
         node.setStatus(1);
     }
 
-
+    /**
+     * 格式化输出
+     * @param prevSet
+     * @return
+     */
     private static String formatNodePrev(Set prevSet) {
         if (prevSet.isEmpty()) {
             return "";
@@ -134,6 +143,11 @@ public class DLCanvasService {
         return str.substring(0, str.length() - 1) + "])";
     }
 
+    /**
+     * 得到最开始的节点，也就是输入节点，输入节点可能有多个
+     * @param data
+     * @return
+     */
     private static List<String> getInNode(com.example.demo.entry.DLCanvas.DLCanvas data) {
 
         ArrayList<String> list = new ArrayList<>();
@@ -147,6 +161,11 @@ public class DLCanvasService {
         return list;
     }
 
+    /**
+     * 遍历查找输出节点，也是可能有多个
+     * @param data
+     * @return
+     */
     private static List<String> getOutNode(com.example.demo.entry.DLCanvas.DLCanvas data) {
 
         ArrayList<String> list = new ArrayList<>();
