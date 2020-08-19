@@ -76,9 +76,12 @@ public class DLCanvasService {
      */
     private static void write(Nodes node, StringBuffer buffer, HashMap<String, Nodes> map) {
 
+        //node已经执行过就直接退出方法
         if (node.getStatus() == 1) {
             return;
         }
+
+        //遍历前面的节点，确保前面的都是执行过的
         String s = "";
         for (String PrevNode : node.getPrev()) {
             if (map.get(PrevNode).getStatus() == 0) {
@@ -86,6 +89,7 @@ public class DLCanvasService {
             }
         }
 
+        //执行此节点
         if (node.getName().equals("add")) {
             s = "X_" + node.getId() + "=" + "keras.layers." + node.getName() + formatNodePrev(node.getPrev());
         } else if (node.getName().equals("InputLayer")) {
@@ -103,10 +107,10 @@ public class DLCanvasService {
             s = "X_" + node.getId() + "=" + "keras.layers." + node.getName() + "(" + node.getNodeParam().toString().substring(1, node.getNodeParam().toString().length() - 1) + ")" + formatNodePrev(node.getPrev());
         }
 
-
-//        System.out.println("=========================");
         buffer.append(s);
         buffer.append("\n");
+
+        //将节点状态改为1
         node.setStatus(1);
     }
 
