@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Set;
 
 public class DLCanvasService {
+
     public static String json2StrModule(String jsonStr) {
 
         //开发时候测试用
@@ -53,8 +54,6 @@ public class DLCanvasService {
             map.get(path.getStartId()).addNext(path.getEndId());
             map.get(path.getEndId()).addPrev(path.getStartId());
         });
-
-//        System.out.println(data);
 
         //遍历边然后开始写入缓冲区
         for (Paths path : data.getPaths()) {
